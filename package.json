@@ -1,0 +1,33 @@
+{
+  "name": "vdom",
+  "version": "1.0.0",
+  "description": "vdom demon",
+  "main": "main.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "dev": "cross-env node_env=develop webpack-dev-server --inline --color --profile --port 9000",
+    "build": "cross-env node_env=production webpack -p --progress --colors"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "cross-env": "^5.1.3",
+    "cross-spawn": "^5.1.0",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  },
+  "dependencies": {}
+}
