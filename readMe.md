@@ -1,10 +1,11 @@
 # 虚拟DOM的实现demo
+
 ### Done
- - 通过 `json` 创建真实DOM
+1. 通过 `json` 创建真实DOM
 
 ### TODO
-- 实现 `diff`
-- 实现根据 `diff` 更新
+1. 实现 `diff`
+2. 实现根据 `diff` 更新
 
 
 ### 运行
