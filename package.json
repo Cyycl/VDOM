@@ -8,8 +8,12 @@
     "dev": "cross-env node_env=develop webpack-dev-server --inline --color --profile --port 9000",
     "build": "cross-env node_env=production webpack -p --progress --colors"
   },
-  "author": "",
+  "author": "jason chen",
+  "email": "jasonChen.cl1989@gmail.com",
   "license": "ISC",
+  "lint-staged": {
+    "src/*.js": "eslint"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -24,6 +28,8 @@
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "happypack": "^4.0.0",
+    "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "webpack": "^3.10.0",

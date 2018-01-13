@@ -1,39 +1,40 @@
 const webpack = require('webpack');
 const HappyPack = require('happypack');
-const fs = require('fs');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const os = require('os');
 
 const ROOT = path.resolve(__dirname);
-const happyThreadPool = HappyPack.ThreadPool({size: os.cups().length});
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 const ENV = process.env.node_env;
 
 const CONFIG = {
   entry: {
-    'main': ROOT + '/main.js',
+    main: `${ROOT}/src/main.js`,
   },
   devtool: 'eval-source-map',
   resolve: {
-    extendsions: ['', '.js'],
+    extensions: ['.js'],
   },
-  modules: {
+  module: {
     rules: [
       {
         test: /\.js/,
         exclude: /node_modules/,
-        use: ['happypack/loader?id=js']
-      }
-    ]
+        use: ['happypack/loader?id=js'],
+      },
+    ],
   },
-  plugins:[
+  plugins: [
     new HappyPack({
       loaders: ['babel-loader?cacheDirectory'],
       threadPool: happyThreadPool,
       id: 'js',
-      cache: true,
+      // cache: true,
       verbose: true,
-    })
-  ]
+    }),
+    new HtmlWebpackPlugin(),
+  ],
 };
 
 if (ENV === 'development') {
@@ -43,12 +44,12 @@ if (ENV === 'development') {
     headers: {
       'X-Custom-Header': 'yes',
       'Access-Control-Allow-Origin': '*',
-    }
+    },
   };
 
   CONFIG.output = {
-    path: __dirname + './dist',
-    fileName: '[name].js?v' + new Date().getTime(),
+    path: `${__dirname}./dist`,
+    fileName: `[name].js?v${new Date().getTime()}`,
   };
 
   CONFIG.plugins = CONFIG.plugins.concat([
@@ -56,8 +57,8 @@ if (ENV === 'development') {
   ]);
 } else {
   CONFIG.output = {
-    path: path.join(_dirname, '/build'),
-    filename: '[name].js?v=' + new Date().getTime(),
+    path: path.join(__dirname, '/build'),
+    filename: `[name].js?v=${new Date().getTime()}`,
   };
 }
 
